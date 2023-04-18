@@ -11,13 +11,15 @@ const CanvasResizing = () => {
   const [zoomFactor, setZoomFactor] = useState(scaleFactor);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+    const { name, value: v } = e.target;
+    const value = Number(v);
+
     if (name === "height") {
-      setHeight(Number(value));
+      setHeight(value);
     } else if (name === "width") {
-      setWidth(Number(value));
+      setWidth(value);
     } else if (name === "zoom") {
-      setZoomFactor(Number(value));
+      setZoomFactor(value);
     }
   };
 
@@ -38,6 +40,8 @@ const CanvasResizing = () => {
         name="height"
         id="height"
         value={canvasHeight}
+        step={10}
+        min={10}
         onChange={handleInputChange}
       />
 
@@ -48,6 +52,8 @@ const CanvasResizing = () => {
         name="width"
         id="width"
         value={canvasWidth}
+        step={10}
+        min={10}
         onChange={handleInputChange}
       />
 
@@ -59,6 +65,8 @@ const CanvasResizing = () => {
         id="zoom"
         value={scaleFactor}
         step={0.05}
+        min={0.05}
+        max={2.5}
         onChange={handleInputChange}
       />
     </>

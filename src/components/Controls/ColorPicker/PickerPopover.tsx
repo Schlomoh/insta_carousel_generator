@@ -1,29 +1,20 @@
-import { useCallback, useEffect, useState } from "react";
+import { RefObject, useCallback, useEffect, useState } from "react";
 import { RgbColor, RgbColorPicker } from "react-colorful";
 import styled from "styled-components";
 
 import { Input, Label } from "@/components/FormElements";
+import { Popover } from "@/components/Popover";
 
 interface PopoverProps {
   show: boolean;
+  onClose: () => void;
+  trigger: RefObject<HTMLElement>;
   color: RgbColor;
   updateColor: (color: RgbColor) => void;
 }
 
 const StyledColorPicker = styled(RgbColorPicker)`
   width: 100% !important;
-`;
-
-const Popover = styled.div`
-  position: absolute;
-  top: 0;
-  width: calc(300px + 1rem + 2px);
-  transform: translateX(calc(300px + 3rem));
-
-  padding: 1rem;
-  border-radius: 10px;
-  background-color: grey;
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
 `;
 
 const rgbToHex = ({ r, g, b }: RgbColor) =>
@@ -40,7 +31,7 @@ const hexToRgb = (hex: string) => {
   );
 };
 
-const PickerPopover = ({ show, color, updateColor }: PopoverProps) => {
+const PickerPopover = ({ color, updateColor, ...props }: PopoverProps) => {
   const [hexValue, setHexValue] = useState(() => rgbToHex(color));
 
   const handleHexChange = useCallback(
@@ -57,8 +48,8 @@ const PickerPopover = ({ show, color, updateColor }: PopoverProps) => {
     setHexValue(rgbToHex(color));
   }, [color]);
 
-  return show ? (
-    <Popover>
+  return (
+    <Popover {...props}>
       <StyledColorPicker color={color} onChange={updateColor} />
       <Label>Hex code</Label>
       <Input
@@ -71,7 +62,7 @@ const PickerPopover = ({ show, color, updateColor }: PopoverProps) => {
         spellCheck="false"
       />
     </Popover>
-  ) : null;
+  );
 };
 
 export default PickerPopover;

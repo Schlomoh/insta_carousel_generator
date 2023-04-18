@@ -7,7 +7,12 @@ const GlobalStyles = createGlobalStyle`
  
  body, html {
     padding: 0;
-    margin: 0
+    margin: 0;
+    background-color: #1b1b1b;
+ }
+
+ #root {
+   height: 100vh;
  }
 `;
 

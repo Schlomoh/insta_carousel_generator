@@ -5,46 +5,30 @@ interface ProviderProps {
   children: React.ReactNode;
 }
 
-const initialState = {
-  canvasHeight: 1920,
-  canvasWidth: 1080,
-  scaleFactor: 0.4, // to make canvas fit the screen
-  backgroundColor: { r: 255, g: 255, b: 255 } as RgbColor,
-  textColor: { r: 0, g: 0, b: 0 } as RgbColor,
+export const CanvasContext = createContext(
+  {} as ReturnType<typeof useCanvasState>
+);
 
-  updateBackgroundColor: ({ r, g, b }: RgbColor) => {}, // placeholder
-  updateTextColor: ({ r, g, b }: RgbColor) => {}, // placeholder
-  resize: (height: number, width: number) => {}, // placeholder
-  zoom: (factor: number) => {},
-};
+const useCanvasState = () => {
+  const [canvasHeight, setCanvasHeight] = useState(1920);
+  const [canvasWidth, setCanvasWidth] = useState(1080);
+  const [scaleFactor, setScaleFactor] = useState(0.4);
+  const [textColor, setTextColor] = useState<RgbColor>({ r: 0, g: 0, b: 0 });
+  const [backgroundColor, setBackgroundColor] = useState<RgbColor>({
+    r: 255,
+    g: 255,
+    b: 255,
+  });
 
-export const CanvasContext = createContext(initialState);
-
-const CanvasContextProvider = ({ children }: ProviderProps) => {
-  const [canvasHeight, setCanvasHeight] = useState(initialState.canvasHeight);
-  const [canvasWidth, setCanvasWidth] = useState(initialState.canvasWidth);
-  const [scaleFactor, setScaleFactor] = useState(initialState.scaleFactor);
-  const [textColor, setTextColor] = useState<RgbColor>(initialState.textColor); // prettier-ignore
-  const [backgroundColor, setBackgroundColor] = useState<RgbColor>(initialState.backgroundColor); // prettier-ignore
-
-  const updateTextColor = ({ r, g, b }: RgbColor) => {
-    setTextColor({ r, g, b });
-  };
-
-  const updateBackgroundColor = ({ r, g, b }: RgbColor) => {
-    setBackgroundColor({ r, g, b });
-  };
-
+  const updateTextColor = (color: RgbColor) => setTextColor(color);
+  const updateBackgroundColor = (color: RgbColor) => setBackgroundColor(color);
   const resize = (height: number, width: number) => {
     setCanvasHeight(height);
     setCanvasWidth(width);
   };
+  const zoom = (factor: number) => setScaleFactor(factor);
 
-  const zoom = (factor: number) => {
-    setScaleFactor(factor);
-  };
-
-  const canvasState = {
+  return {
     canvasHeight,
     canvasWidth,
     scaleFactor,
@@ -55,6 +39,10 @@ const CanvasContextProvider = ({ children }: ProviderProps) => {
     resize,
     zoom,
   };
+};
+
+const CanvasContextProvider = ({ children }: ProviderProps) => {
+  const canvasState = useCanvasState();
 
   return (
     <CanvasContext.Provider value={canvasState}>
