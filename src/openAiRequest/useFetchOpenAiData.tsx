@@ -64,7 +64,7 @@ interface ResourceState {
   read: () => OpenAiResponse | undefined;
 }
 
-const isDev = import.meta.env.DEV && import.meta.env.USE_DUMMY_DATA;
+const isDev = import.meta.env.DEV && import.meta.env.VITE_USE_DUMMY_DATA;
 
 export const useFetchOpenAiData = (
   promptData: PromptData,

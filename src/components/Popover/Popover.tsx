@@ -11,7 +11,8 @@ interface PopoverProps {
 
 const StyledPopover = styled(motion.div)`
   position: absolute;
-  top: 0;
+  top: 50%;
+  translate: 0 -50%;
   width: calc(300px);
   padding: 1rem;
   border-radius: 10px;

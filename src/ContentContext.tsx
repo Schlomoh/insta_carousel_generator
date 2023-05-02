@@ -18,7 +18,8 @@ export const ContentContext = createContext(
   {} as ReturnType<typeof useContentState>
 );
 
-const isDev = import.meta.env.DEV && import.meta.env.USE_DUMMY_DATA;
+const isDev = import.meta.env.DEV && import.meta.env.VITE_USE_DUMMY_DATA;
+console.log(isDev);
 
 const useContentState = () => {
   const [posts, setPosts] = useState<null | PostData>(
@@ -32,11 +33,11 @@ const useContentState = () => {
     setPosts((prev) => [...(prev || []), post]);
   };
 
-  const setTitleImageSrc = (imageSrc: string) => {
+  const updatePostProperty = (value: string, property: string) => {
     if (selectedPost === null) return;
 
     const updatedPosts = posts?.map((post, postIndex) =>
-      postIndex === selectedPost ? { ...post, titleImageSrc: imageSrc } : post
+      postIndex === selectedPost ? { ...post, [property]: value } : post
     );
 
     setPosts(updatedPosts || null);
@@ -49,7 +50,7 @@ const useContentState = () => {
     addPost,
     setSelectedPost,
     setSelectedCarouselImage,
-    setTitleImageSrc,
+    updatePostProperty,
   };
 };
 

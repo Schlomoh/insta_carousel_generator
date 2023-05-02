@@ -8,7 +8,6 @@ import { ContentContext } from "@/ContentContext";
 import { Form, Label } from "../FormElements";
 import { ColorPicker } from "./ColorPicker";
 import { CanvasResizing } from "./CanvasResizing";
-import { JsonUpload } from "./JsonUpload";
 import { PostSelection } from "./PostSelection";
 import { ImageUpload } from "./ImageUpload";
 import { ExportButton } from "./ExportButton";
@@ -16,10 +15,13 @@ import CaptionTextarea from "./CaptionTextarea/CaptionTextarea";
 
 const ControlsOverlay = styled(motion.div)`
   position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+
   z-index: 5000;
   background-color: #2f2f2f;
   width: 300px;
-  margin: 1rem;
+  margin: 0 1rem;
   padding: 1rem;
   border-radius: 10px;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
@@ -76,7 +78,6 @@ const Controls: React.FC = () => {
               />
             )}
             <CaptionTextarea />
-            {/* <JsonUpload /> */}
             <Label>Actions</Label>
             <ImageUpload />
             <ExportButton />

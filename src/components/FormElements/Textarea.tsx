@@ -6,7 +6,8 @@ const Textarea = styled.textarea<{
   padding?: CSSProperties["padding"];
 }>`
   width: ${({ width }) => (width ? width : "unset")};
-
+  resize: vertical;
+  min-height: 6rem;
   padding: ${({ padding }) => (padding ? padding : ".5rem")};
   background-color: transparent;
   color: white;

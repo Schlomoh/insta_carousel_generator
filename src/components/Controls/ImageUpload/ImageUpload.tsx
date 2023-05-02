@@ -4,8 +4,9 @@ import { ChangeEvent, useContext, useRef } from "react";
 
 const ImageUpload = () => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const { setTitleImageSrc, setSelectedCarouselImage } =
-    useContext(ContentContext);
+  const { updatePostProperty, setSelectedCarouselImage } = useContext(
+    ContentContext
+  );
 
   const handleClick = () => {
     inputRef.current?.click();
@@ -14,7 +15,7 @@ const ImageUpload = () => {
   const handleFileUpload = (file: File) => {
     const reader = new FileReader();
     reader.onload = () => {
-      setTitleImageSrc(reader.result as string);
+      updatePostProperty(reader.result as string, "titleImageSrc");
       setSelectedCarouselImage(0);
     };
 
@@ -30,7 +31,9 @@ const ImageUpload = () => {
 
   return (
     <>
-      <ControlsButton onClick={handleClick}>🙈 Upload title image</ControlsButton>
+      <ControlsButton onClick={handleClick}>
+        🙈 Upload title image
+      </ControlsButton>
       <input
         onChange={handleUpload}
         style={{ display: "none" }}

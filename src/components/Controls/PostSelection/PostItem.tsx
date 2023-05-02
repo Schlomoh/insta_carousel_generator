@@ -29,7 +29,7 @@ const PostItem = (props: PostItemProps) => {
   const handleClick = () => {
     selectedPost !== index && setSelectedCarouselImage(null);
     setSelectedPost(index);
-    setShow(!show);
+    setShow((show) => !show);
   };
 
   return (

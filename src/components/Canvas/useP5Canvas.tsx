@@ -48,7 +48,11 @@ const useP5Canvas = () => {
     const graphics = contentRef.current;
     graphics.resizeCanvas(canvasWidth, canvasHeight);
     graphics.fill(textColor.r, textColor.g, textColor.b);
-    graphics.background(backgroundColor.r, backgroundColor.g, backgroundColor.b);
+    graphics.background(
+      backgroundColor.r,
+      backgroundColor.g,
+      backgroundColor.b
+    );
 
     if (selectedCarouselImage === 0 && imageSrc) {
       if (!loadedImage) {
@@ -60,17 +64,18 @@ const useP5Canvas = () => {
         const offsetY = (canvasHeight - height * scaleFactor) / 2;
 
         graphics.image(loadedImage, offsetX, offsetY, width * scaleFactor, height * scaleFactor) // prettier-ignore
-    
-        // Adding white rectangle behind the text
+
+        // Adding rectangle behind the text
         graphics.push();
         graphics.fill(titleBackgroundColor.r, titleBackgroundColor.g, titleBackgroundColor.b) // prettier-ignore
         graphics.noStroke();
-        graphics.rect(canvasWidth / 3, canvasHeight / 2, (canvasWidth / 3) * 2, canvasHeight / 2, 20, 0, 0, 0); // prettier-ignore
+        graphics.rect(canvasWidth / 3, canvasHeight / 3, canvasWidth / 3 * 2, canvasHeight / 3 * 2, 20, 0, 0, 0); // prettier-ignore
         graphics.pop();
 
         // Adjusting text position, padding, and size
-        graphics.textSize(75).textAlign(p5.LEFT, p5.CENTER).textStyle(p5.BOLD);
-        graphics.text(text, canvasWidth / 3 + 50, canvasHeight / 2, (canvasWidth / 3) * 2 - 25, canvasHeight / 2); // prettier-ignore
+        const padding = 50;
+        graphics.textSize(75).textAlign(p5.LEFT, p5.TOP).textStyle(p5.BOLD);
+        graphics.text(text, canvasWidth / 3 + padding, canvasHeight / 3 + padding, (canvasWidth / 3 * 2) - (padding * 2), (canvasHeight / 3 * 2) - (padding * 2)); // prettier-ignore
       }
     } else {
       graphics.textSize(100).textAlign(p5.CENTER, p5.CENTER).textStyle(p5.BOLD);
