@@ -10,7 +10,7 @@ export default async (request: Request) => {
       Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
     },
     body: JSON.stringify({
-      body: request.body,
+      body: await request.json(),
     }),
   });
 
