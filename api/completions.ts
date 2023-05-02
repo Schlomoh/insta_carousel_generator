@@ -3,7 +3,7 @@ export const config = {
 };
 
 export default async (request: Request) => {
-  const response = await fetch("https://api.openai.com/v1/completions", {
+  const response = await fetch(`${process.env.OPENAI_CHAT_URL}/completions`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
