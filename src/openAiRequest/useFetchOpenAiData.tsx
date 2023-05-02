@@ -6,7 +6,7 @@ import wrapPromise from "./wrapPromise";
 import { OpenAiResponse } from "./OpenAiTypes";
 
 const fetchData = async (promptData: PromptData): Promise<OpenAiResponse> => {
-  const url = "/completions";
+  const url = "/api/completions";
 
   const prompt = `As an expert on social media marketing, generate a JSON object 
   containing Instagram carousel posts for the ${promptData.branche} niche, 
@@ -64,7 +64,7 @@ interface ResourceState {
   read: () => OpenAiResponse | undefined;
 }
 
-const isDev = import.meta.env.DEV;
+const isDev = import.meta.env.DEV && import.meta.env.USE_DUMMY_DATA;
 
 export const useFetchOpenAiData = (
   promptData: PromptData,

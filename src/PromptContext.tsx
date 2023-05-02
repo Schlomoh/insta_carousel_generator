@@ -15,7 +15,7 @@ export const PromptContext = createContext(
   {} as ReturnType<typeof usePromptState>
 );
 
-const isDev = import.meta.env.DEV;
+const isDev = import.meta.env.DEV && import.meta.env.USE_DUMMY_DATA;
 
 const usePromptState = () => {
   const [promptData, setPromptData] = useState<PromptData>({

@@ -18,7 +18,7 @@ export const ContentContext = createContext(
   {} as ReturnType<typeof useContentState>
 );
 
-const isDev = import.meta.env.DEV;
+const isDev = import.meta.env.DEV && import.meta.env.USE_DUMMY_DATA;
 
 const useContentState = () => {
   const [posts, setPosts] = useState<null | PostData>(

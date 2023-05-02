@@ -24,6 +24,7 @@ export default ({ mode }) => {
       proxy: {
         "/api/completions": {
           target: process.env.OPENAI_CHAT_URL,
+          rewrite: (path) => path.replace(/^\/api/, ""),
           changeOrigin: true,
           headers: {
             "Content-Type": "application/json",
