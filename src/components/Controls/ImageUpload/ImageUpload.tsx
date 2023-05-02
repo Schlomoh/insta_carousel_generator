@@ -30,7 +30,7 @@ const ImageUpload = () => {
 
   return (
     <>
-      <ControlsButton onClick={handleClick}>Upload title image</ControlsButton>
+      <ControlsButton onClick={handleClick}>🙈 Upload title image</ControlsButton>
       <input
         onChange={handleUpload}
         style={{ display: "none" }}

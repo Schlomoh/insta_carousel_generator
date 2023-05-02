@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { dummyData } from "./dummyData";
 
 interface ProviderProps {
   children: React.ReactNode;
@@ -17,8 +18,12 @@ export const ContentContext = createContext(
   {} as ReturnType<typeof useContentState>
 );
 
+const isDev = import.meta.env.DEV;
+
 const useContentState = () => {
-  const [posts, setPosts] = useState<null | PostData>(null);
+  const [posts, setPosts] = useState<null | PostData>(
+    isDev ? [dummyData] : null
+  );
   const [selectedPost, setSelectedPost] = useState<null | number>(null);
   const [selectedCarouselImage, setSelectedCarouselImage] = useState<null | number>(null); // prettier-ignore
 

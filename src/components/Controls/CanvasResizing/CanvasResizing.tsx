@@ -3,8 +3,9 @@ import { Input, Label } from "@/components/FormElements";
 import { useContext, useEffect, useState } from "react";
 
 const CanvasResizing = () => {
-  const { canvasHeight, canvasWidth, scaleFactor, resize, zoom } =
-    useContext(CanvasContext);
+  const { canvasHeight, canvasWidth, scaleFactor, resize, zoom } = useContext(
+    CanvasContext
+  );
 
   const [height, setHeight] = useState(canvasHeight);
   const [width, setWidth] = useState(canvasWidth);
@@ -56,7 +57,7 @@ const CanvasResizing = () => {
         min={10}
         onChange={handleInputChange}
       />
-{/* 
+      {/* 
       <Label htmlFor="zoom">Zoom</Label>
       <Input
         type="number"

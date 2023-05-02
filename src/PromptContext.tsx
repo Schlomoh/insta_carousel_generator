@@ -15,13 +15,15 @@ export const PromptContext = createContext(
   {} as ReturnType<typeof usePromptState>
 );
 
+const isDev = import.meta.env.DEV;
+
 const usePromptState = () => {
   const [promptData, setPromptData] = useState<PromptData>({
     branche: "",
     topic: "",
     instagram: "",
   });
-  const [finished, setFinished] = useState(false);
+  const [finished, setFinished] = useState(isDev);
 
   const handlePromptChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

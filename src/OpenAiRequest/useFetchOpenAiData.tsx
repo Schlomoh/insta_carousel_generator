@@ -64,12 +64,14 @@ interface ResourceState {
   read: () => OpenAiResponse | undefined;
 }
 
+const isDev = import.meta.env.DEV;
+
 export const useFetchOpenAiData = (
   promptData: PromptData,
   isFinished: boolean
 ) => {
   const [resource, setResource] = useState<ResourceState | null>(null);
-  const prevIsFinishedRef = useRef(false);
+  const prevIsFinishedRef = useRef<boolean | null>(isDev || null);
 
   useEffect(() => {
     const prevIsFinished = prevIsFinishedRef.current;

@@ -4,6 +4,7 @@ import GlobalStyles from "./GlobalStyles";
 import CanvasContextProvider from "./CanvasContext";
 import ContentContextProvider from "./ContentContext";
 import PromptContextProvider from "./PromptContext";
+import { Suspense } from "react";
 
 const CenterContainer = styled.div`
   height: 100%;

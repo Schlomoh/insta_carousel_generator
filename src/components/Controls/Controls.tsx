@@ -1,16 +1,18 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { CanvasContext } from "@/CanvasContext";
 import { ContentContext } from "@/ContentContext";
 
-import { Form } from "../FormElements";
+import { Form, Label } from "../FormElements";
 import { ColorPicker } from "./ColorPicker";
 import { CanvasResizing } from "./CanvasResizing";
 import { JsonUpload } from "./JsonUpload";
 import { PostSelection } from "./PostSelection";
 import { ImageUpload } from "./ImageUpload";
+import { ExportButton } from "./ExportButton";
+import CaptionTextarea from "./CaptionTextarea/CaptionTextarea";
 
 const ControlsOverlay = styled(motion.div)`
   position: absolute;
@@ -32,9 +34,9 @@ const Controls: React.FC = () => {
     updateTitleBackgroundColor,
     updateTextColor,
   } = useContext(CanvasContext);
-  const { posts, selectedPost, selectedCarouselImage } = useContext(
-    ContentContext
-  );
+  const contentValues = useContext(ContentContext);
+
+  const { posts, selectedPost, selectedCarouselImage } = contentValues;
 
   const postsPresent = posts !== null;
   const postSelected = selectedPost !== null && selectedCarouselImage !== null;
@@ -73,8 +75,11 @@ const Controls: React.FC = () => {
                 updateColor={updateTitleBackgroundColor}
               />
             )}
-            <JsonUpload />
+            <CaptionTextarea />
+            {/* <JsonUpload /> */}
+            <Label>Actions</Label>
             <ImageUpload />
+            <ExportButton />
           </Form>
         )}
       </AnimatePresence>

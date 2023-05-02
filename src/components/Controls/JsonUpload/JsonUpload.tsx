@@ -3,7 +3,7 @@ import { ControlsButton } from "@/components/FormElements";
 import { ChangeEvent, useContext, useRef } from "react";
 
 const JsonUpload = () => {
-  const { setPostsText } = useContext(ContentContext);
+  const { addPost } = useContext(ContentContext);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleButtonClick = () => {
@@ -17,7 +17,7 @@ const JsonUpload = () => {
     if (files && files.length > 0) {
       const reader = new FileReader();
       reader.onload = () => {
-        setPostsText(reader.result as string);
+        addPost(reader.result as string);
       };
 
       reader.readAsText(files[0]);
