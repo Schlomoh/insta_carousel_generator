@@ -22,8 +22,8 @@ export default ({ mode }) => {
     server: {
       port: 3005,
       proxy: {
-        "/completions": {
-          target: "https://api.openai.com/v1/chat",
+        "/api/completions": {
+          target: process.env.OPENAI_CHAT_URL,
           changeOrigin: true,
           headers: {
             "Content-Type": "application/json",
