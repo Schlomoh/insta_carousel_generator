@@ -1,11 +1,11 @@
 import { Suspense, useContext, useEffect } from "react";
 import styled from "styled-components";
+import { ClimbingBoxLoader } from "react-spinners";
 
 import { ContentContext } from "@/ContentContext";
-import { PromptBar } from "../PromptBar";
 import { PromptContext } from "@/PromptContext";
-import { ClimbingBoxLoader } from "react-spinners";
-import { useFetchOpenAiData } from "@/openAiRequest";
+import { useFetchOpenAiData } from "@/OpenAiRequest";
+import { PromptBar } from "../PromptBar";
 
 const InstructionsContainer = styled.div`
   position: absolute;
