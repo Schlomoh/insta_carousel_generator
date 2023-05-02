@@ -4,7 +4,7 @@ import { ClimbingBoxLoader } from "react-spinners";
 
 import { ContentContext } from "@/ContentContext";
 import { PromptContext } from "@/PromptContext";
-import { useFetchOpenAiData } from "@/OpenAiRequest";
+import { useFetchOpenAiData } from "@/openAiRequest";
 import { PromptBar } from "../PromptBar";
 
 const InstructionsContainer = styled.div`
