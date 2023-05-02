@@ -1,5 +1,5 @@
-import { PromptContext, PromptData } from "@/PromptContext";
-import { useContext, useRef } from "react";
+import { PromptData } from "@/PromptContext";
+import { useRef } from "react";
 import { useState, useEffect } from "react";
 
 import wrapPromise from "./wrapPromise";
