@@ -56,7 +56,7 @@ const CanvasResizing = () => {
         min={10}
         onChange={handleInputChange}
       />
-
+{/* 
       <Label htmlFor="zoom">Zoom</Label>
       <Input
         type="number"
@@ -68,7 +68,7 @@ const CanvasResizing = () => {
         min={0.05}
         max={2.5}
         onChange={handleInputChange}
-      />
+      /> */}
     </>
   );
 };

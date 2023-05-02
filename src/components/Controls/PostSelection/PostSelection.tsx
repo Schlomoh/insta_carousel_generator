@@ -24,7 +24,12 @@ const PostSelection = () => {
       <Label>Posts</Label>
       <ItemContainer>
         {posts.map((post, i) => (
-          <PostItem key={post.title} index={i} {...post} />
+          <PostItem
+            key={i}
+            title={posts[i].carouselTexts[0]}
+            index={i}
+            {...post}
+          />
         ))}
       </ItemContainer>
     </PostContainer>

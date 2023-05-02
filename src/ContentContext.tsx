@@ -1,13 +1,12 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 
 interface ProviderProps {
   children: React.ReactNode;
 }
 
 interface PostDataEntry {
-  title: string;
-  title_image_src?: string;
-  reel_text: string[];
+  titleImageSrc?: string;
+  carouselTexts: string[];
   caption: string;
   hashtags: string[];
 }
@@ -23,15 +22,16 @@ const useContentState = () => {
   const [selectedPost, setSelectedPost] = useState<null | number>(null);
   const [selectedCarouselImage, setSelectedCarouselImage] = useState<null | number>(null); // prettier-ignore
 
-  const setPostsText = (raw: string) => {
-    setPosts(JSON.parse(raw) as PostData);
+  const addPost = (raw: string) => {
+    const post = JSON.parse(raw) as PostDataEntry;
+    setPosts((prev) => [...(prev || []), post]);
   };
 
   const setTitleImageSrc = (imageSrc: string) => {
     if (selectedPost === null) return;
 
     const updatedPosts = posts?.map((post, postIndex) =>
-      postIndex === selectedPost ? { ...post, title_image_src: imageSrc } : post
+      postIndex === selectedPost ? { ...post, titleImageSrc: imageSrc } : post
     );
 
     setPosts(updatedPosts || null);
@@ -41,7 +41,7 @@ const useContentState = () => {
     posts,
     selectedPost,
     selectedCarouselImage,
-    setPostsText,
+    addPost,
     setSelectedPost,
     setSelectedCarouselImage,
     setTitleImageSrc,

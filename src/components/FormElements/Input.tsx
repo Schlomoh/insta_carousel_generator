@@ -1,6 +1,10 @@
+import { CSSProperties } from "react";
 import styled from "styled-components";
 
-const Input = styled.input`
+const Input = styled.input<{
+  width?: CSSProperties["width"];
+  padding?: CSSProperties["padding"];
+}>`
   &[type="number"] {
     -webkit-appearance: textfield;
     -moz-appearance: textfield;
@@ -12,12 +16,14 @@ const Input = styled.input`
     -webkit-appearance: none;
   }
 
-  padding: 0.5rem;
+  width: ${({ width }) => (width ? width : "unset")};
+
+  padding: ${({ padding }) => (padding ? padding : ".5rem")};
   background-color: transparent;
   color: white;
   border: #666 1px solid;
   border-radius: 5px;
-  box-sizing: content-box;
+  box-sizing: border-box;
 
   transition: all 0.2s;
 

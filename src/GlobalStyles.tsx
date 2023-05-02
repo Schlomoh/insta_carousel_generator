@@ -9,7 +9,15 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     margin: 0;
     background-color: #1b1b1b;
- }
+   }
+   
+   h1 {
+      color: #ddd
+   };
+
+   h2, h3, h4 {
+      color: #aaa
+   }
 
  #root {
    height: 100vh;

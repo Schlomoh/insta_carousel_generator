@@ -1,8 +1,8 @@
-import { createContext, useState } from "react";
+import { createContext, useState, ReactNode } from "react";
 import { RgbColor } from "react-colorful";
 
 interface ProviderProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export const CanvasContext = createContext(
@@ -10,23 +10,21 @@ export const CanvasContext = createContext(
 );
 
 const useCanvasState = () => {
-  const [canvasHeight, setCanvasHeight] = useState(1920);
+  const [canvasHeight, setCanvasHeight] = useState(1200);
   const [canvasWidth, setCanvasWidth] = useState(1080);
-  const [scaleFactor, setScaleFactor] = useState(0.4);
+  const [scaleFactor, setScaleFactor] = useState(0.45);
   const [textColor, setTextColor] = useState<RgbColor>({ r: 0, g: 0, b: 0 });
-  const [backgroundColor, setBackgroundColor] = useState<RgbColor>({
-    r: 255,
-    g: 255,
-    b: 255,
-  });
+  const [backgroundColor, setBackgroundColor] = useState<RgbColor>({ r: 255, g: 255, b: 255 }); // prettier-ignore
+  const [titleBackgroundColor, setTitleBackgroundColor] = useState<RgbColor>({ r: 210, g: 210, b: 210 }); // prettier-ignore
 
   const updateTextColor = (color: RgbColor) => setTextColor(color);
   const updateBackgroundColor = (color: RgbColor) => setBackgroundColor(color);
+  const updateTitleBackgroundColor = (color: RgbColor) => setTitleBackgroundColor(color); // prettier-ignore
+  const zoom = (factor: number) => setScaleFactor(factor);
   const resize = (height: number, width: number) => {
     setCanvasHeight(height);
     setCanvasWidth(width);
   };
-  const zoom = (factor: number) => setScaleFactor(factor);
 
   return {
     canvasHeight,
@@ -34,8 +32,10 @@ const useCanvasState = () => {
     scaleFactor,
     textColor,
     backgroundColor,
+    titleBackgroundColor,
     updateTextColor,
     updateBackgroundColor,
+    updateTitleBackgroundColor,
     resize,
     zoom,
   };

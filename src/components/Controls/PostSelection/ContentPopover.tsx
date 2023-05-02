@@ -28,12 +28,13 @@ const ItemContainer = styled.div`
 
 const ContentPopover: React.FC<ContentPopoverProps> = (props) => {
   const { index, triggerRef, clickHandler, show } = props;
-  
-  const { posts, selectedCarouselImage, setSelectedCarouselImage } =
-    useContext(ContentContext);
+
+  const { posts, selectedCarouselImage, setSelectedCarouselImage } = useContext(
+    ContentContext
+  );
 
   const post = posts?.[index];
-  const reelText = post?.reel_text;
+  const reelText = post?.carouselTexts;
 
   const handleClick = (carouselIndex: number) => {
     setSelectedCarouselImage(carouselIndex);

@@ -55,7 +55,7 @@ const SlideIndicator: React.FC = () => {
     setSelectedCarouselImage,
   } = useContext(ContentContext);
 
-  const texts = posts?.[selectedPost || 0]?.reel_text;
+  const texts = posts?.[selectedPost || 0]?.carouselTexts;
 
   const handleClick = (direction: Directions) => {
     if (selectedCarouselImage === null || !texts) return;

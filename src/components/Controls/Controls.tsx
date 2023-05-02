@@ -24,13 +24,21 @@ const ControlsOverlay = styled(motion.div)`
 `;
 
 const Controls: React.FC = () => {
-  const { backgroundColor, textColor, updateBackgroundColor, updateTextColor } =
-    useContext(CanvasContext);
-  const { posts, selectedPost, selectedCarouselImage } =
-    useContext(ContentContext);
+  const {
+    backgroundColor,
+    titleBackgroundColor,
+    textColor,
+    updateBackgroundColor,
+    updateTitleBackgroundColor,
+    updateTextColor,
+  } = useContext(CanvasContext);
+  const { posts, selectedPost, selectedCarouselImage } = useContext(
+    ContentContext
+  );
 
   const postsPresent = posts !== null;
   const postSelected = selectedPost !== null && selectedCarouselImage !== null;
+  const addedImage = posts?.[selectedPost || 0]?.titleImageSrc;
 
   return postsPresent ? (
     <ControlsOverlay
@@ -58,6 +66,13 @@ const Controls: React.FC = () => {
               color={textColor}
               updateColor={updateTextColor}
             />
+            {addedImage && (
+              <ColorPicker
+                label="Title background color"
+                color={titleBackgroundColor}
+                updateColor={updateTitleBackgroundColor}
+              />
+            )}
             <JsonUpload />
             <ImageUpload />
           </Form>
