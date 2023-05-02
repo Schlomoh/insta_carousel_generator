@@ -18,7 +18,7 @@ export default ({ mode }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd(), "") };
 
   return defineConfig({
-    base: "/insta_carousel_generator/",
+    // base: "/insta_carousel_generator/",
     server: {
       port: 3005,
       proxy: {
