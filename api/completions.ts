@@ -9,9 +9,7 @@ export default async (request: Request) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
     },
-    body: JSON.stringify({
-      body: await request.json(),
-    }),
+    body: JSON.stringify(await request.json()),
   });
 
   return response;

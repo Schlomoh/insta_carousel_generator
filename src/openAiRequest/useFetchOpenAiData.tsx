@@ -43,7 +43,7 @@ const fetchData = async (promptData: PromptData): Promise<OpenAiResponse> => {
     caption: string;
     hashtags: string[];
   }
-  do not add unicode escape characters.
+  only add the real emoji characters, no supplementation.
   only return the json data as a plain text. nothing else.`;
 
   const response = await fetch(url, {
