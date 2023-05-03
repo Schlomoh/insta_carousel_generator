@@ -30,10 +30,11 @@ npm install
 
 ## 🔧 Configuration
 
-In order to integrate the OpenAI API, create a .env file in the project root and add your API key:
+In order to integrate the OpenAI API, create a .env file in the project root and add your `OPENAI_API_KEY` as well as the `OPENAI_CHAT_URL`:
 
 ```makefile
 OPENAI_API_KEY=your_api_key_here
+OPENAI_CHAT_URL=https://api.openai.com/v1/chat
 ```
 
 Make sure to replace your_api_key_here with your actual OpenAI API key.
