@@ -15,7 +15,8 @@ export const PromptContext = createContext(
   {} as ReturnType<typeof usePromptState>
 );
 
-const isDev = import.meta.env.DEV && import.meta.env.VITE_USE_DUMMY_DATA;
+const useDummyData = import.meta.env.VITE_USE_DUMMY_DATA === 'true';
+const isDev = import.meta.env.DEV && useDummyData
 
 const usePromptState = () => {
   const [promptData, setPromptData] = useState<PromptData>({
@@ -23,7 +24,7 @@ const usePromptState = () => {
     topic: "",
     instagram: "",
   });
-  const [finished, setFinished] = useState(isDev);
+  const [finished, setFinished] = useState<boolean>(isDev);
 
   const handlePromptChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

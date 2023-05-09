@@ -9,7 +9,7 @@ import PromptBarButtons from "./PromptBarButtons";
 import StyledPromptBarContainer from "./StyledPromptBarContainer";
 
 type IndexState = [number, React.Dispatch<React.SetStateAction<number>>];
-interface QuestionairProps {
+interface QuestionnaireProps {
   placeholder: string;
   name: string;
   indexState: IndexState;
@@ -51,7 +51,7 @@ const loaderVariant = {
   exit: { opacity: 0, scale: 0.9 },
 } as Variants;
 
-const Questionair = (props: QuestionairProps) => {
+const Questionnaire = (props: QuestionnaireProps) => {
   const { promptData, handlePromptChange, setFinished } = useContext(
     PromptContext
   );
@@ -125,9 +125,11 @@ const PromptBar = () => {
             </motion.div>
           }
         >
-          <h1>Instagram carousel generator 🚀</h1>
-          <h3>{title}</h3>
-          <Questionair {...rest} indexState={indexState} />
+          <h1 style={{ textAlign: "center" }}>
+            Instagram carousel generator 🚀
+          </h1>
+          <h3 style={{ textAlign: "center" }}>{title}</h3>
+          <Questionnaire {...rest} indexState={indexState} />
         </Suspense>
       </AnimatePresence>
     </StyledPromptBarContainer>

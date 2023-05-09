@@ -50,6 +50,7 @@ const Selection = () => {
 
 const Instructions = () => {
   const { finished } = useContext(PromptContext);
+  console.log("finished", finished);
 
   return (
     <InstructionsContainer>
