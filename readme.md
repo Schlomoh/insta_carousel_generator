@@ -1,4 +1,5 @@
 # Instagram Carousel Post Generator 🚀📸
+[![Deploy site](https://github.com/Schlomoh/insta_carousel_generator/actions/workflows/GH_pages_deployment.yml/badge.svg?branch=main)](https://github.com/Schlomoh/insta_carousel_generator/actions/workflows/GH_pages_deployment.yml)
 
 A fun and interactive TypeScript-based project for generating engaging Instagram carousel posts, powered by OpenAI API. This Instagram post generator is built using the Vite.js build tool for blazing-fast development and efficient building.
 
@@ -29,10 +30,11 @@ npm install
 
 ## 🔧 Configuration
 
-In order to integrate the OpenAI API, create a .env file in the project root and add your API key:
+In order to integrate the OpenAI API, create a .env file in the project root and add your `OPENAI_API_KEY` as well as the `OPENAI_CHAT_URL`:
 
 ```makefile
 OPENAI_API_KEY=your_api_key_here
+OPENAI_CHAT_URL=https://api.openai.com/v1/chat
 ```
 
 Make sure to replace your_api_key_here with your actual OpenAI API key.
