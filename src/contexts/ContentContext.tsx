@@ -30,6 +30,7 @@ export const useContentState = () => {
 
   const addPost = (raw: string) => {
     const post = JSON.parse(raw) as PostDataEntry;
+    console.log(post)
     setPosts((prev) => [...(prev || []), post]);
   };
 
