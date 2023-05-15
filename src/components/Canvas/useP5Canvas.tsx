@@ -1,8 +1,7 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import p5Types from "p5";
 
-import { CanvasContext } from "@/CanvasContext";
-import { ContentContext } from "@/ContentContext";
+import { CanvasContext, ContentContext } from "@/contexts";
 
 const useP5Canvas = () => {
   const canvasState = useContext(CanvasContext);

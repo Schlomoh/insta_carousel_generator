@@ -3,7 +3,7 @@ import { AnimatePresence, motion, Variants } from "framer-motion";
 import styled from "styled-components";
 import { ClimbingBoxLoader } from "react-spinners";
 
-import { PromptContext } from "@/PromptContext";
+import { PromptContext } from "@/contexts";
 import { Input } from "../FormElements";
 import PromptBarButtons from "./PromptBarButtons";
 import StyledPromptBarContainer from "./StyledPromptBarContainer";

@@ -2,8 +2,7 @@ import { Suspense, useContext, useEffect } from "react";
 import styled from "styled-components";
 import { ClimbingBoxLoader } from "react-spinners";
 
-import { ContentContext } from "@/ContentContext";
-import { PromptContext } from "@/PromptContext";
+import { ContentContext, PromptContext } from "@/contexts";
 import { useFetchOpenAiData } from "@/openAiRequest";
 import { PromptBar } from "../PromptBar";
 

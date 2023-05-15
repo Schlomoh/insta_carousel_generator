@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
-import { ContentContext } from "@/ContentContext";
+import { ContentContext } from "@/contexts";
 import ContentPopover from "./ContentPopover";
 import { ControlsButton } from "@/components/FormElements";
 

@@ -2,8 +2,7 @@ import { useContext, useEffect } from "react";
 import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
 
-import { CanvasContext } from "@/CanvasContext";
-import { ContentContext } from "@/ContentContext";
+import { CanvasContext, ContentContext } from "@/contexts";
 
 import { Form, Label } from "../FormElements";
 import { ColorPicker } from "./ColorPicker";

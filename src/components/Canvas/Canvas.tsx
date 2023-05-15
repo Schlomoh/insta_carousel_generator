@@ -3,8 +3,7 @@ import styled from "styled-components";
 import Sketch from "react-p5";
 import { AnimatePresence, motion } from "framer-motion";
 
-import { CanvasContext } from "@/CanvasContext";
-import { ContentContext } from "@/ContentContext";
+import { CanvasContext, ContentContext } from "@/contexts";
 import useP5Canvas from "./useP5Canvas";
 import Instructions from "./Instructions";
 

@@ -1,4 +1,4 @@
-import { PromptData } from "@/PromptContext";
+import { PromptData } from "@/contexts";
 import { useRef } from "react";
 import { useState, useEffect } from "react";
 
@@ -64,8 +64,8 @@ interface ResourceState {
   read: () => OpenAiResponse | undefined;
 }
 
-const useDummyData = import.meta.env.VITE_USE_DUMMY_DATA === 'true';
-const isDev = import.meta.env.DEV && useDummyData
+const useDummyData = import.meta.env.VITE_USE_DUMMY_DATA === "true";
+const isDev = import.meta.env.DEV && useDummyData;
 
 export const useFetchOpenAiData = (
   promptData: PromptData,

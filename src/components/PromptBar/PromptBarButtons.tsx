@@ -1,4 +1,4 @@
-import { PromptContext } from "@/PromptContext";
+import { PromptContext } from "@/contexts";
 import { ButtonHTMLAttributes, useContext } from "react";
 import styled from "styled-components";
 import { Prompts } from "./PromptBar";

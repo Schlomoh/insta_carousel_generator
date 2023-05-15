@@ -1,4 +1,4 @@
-import { ContentContext } from "@/ContentContext";
+import { ContentContext } from "@/contexts";
 import { ControlsButton } from "@/components/FormElements";
 import { ChangeEvent, useContext, useRef } from "react";
 

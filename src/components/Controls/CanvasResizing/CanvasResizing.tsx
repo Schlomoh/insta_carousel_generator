@@ -1,4 +1,4 @@
-import { CanvasContext } from "@/CanvasContext";
+import { CanvasContext } from "@/contexts";
 import { Input, Label } from "@/components/FormElements";
 import { useContext, useEffect, useState } from "react";
 

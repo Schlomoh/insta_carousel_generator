@@ -1,4 +1,4 @@
-import { ContentContext } from "@/ContentContext";
+import { ContentContext } from "@/contexts";
 import { useContext } from "react";
 import styled from "styled-components";
 

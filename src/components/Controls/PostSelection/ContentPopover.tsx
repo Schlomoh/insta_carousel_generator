@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import styled from "styled-components";
 
-import { ContentContext } from "@/ContentContext";
+import { ContentContext } from "@/contexts";
 import { Popover } from "@/components/Popover";
 import { ControlsButton, Label } from "@/components/FormElements";
 import { Arrow, PostItemProps } from "./PostItem";

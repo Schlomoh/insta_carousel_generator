@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import styled from "styled-components";
 
-import { ContentContext } from "@/ContentContext";
+import { ContentContext } from "@/contexts";
 import { Label } from "@/components/FormElements";
 import PostItem from "./PostItem";
 
