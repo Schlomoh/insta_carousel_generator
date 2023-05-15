@@ -9,7 +9,7 @@ export const CanvasContext = createContext(
   {} as ReturnType<typeof useCanvasState>
 );
 
-const useCanvasState = () => {
+export const useCanvasState = () => {
   const [canvasHeight, setCanvasHeight] = useState(1200);
   const [canvasWidth, setCanvasWidth] = useState(1080);
   const [scaleFactor, setScaleFactor] = useState(0.45);

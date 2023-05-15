@@ -5,7 +5,7 @@ interface ProviderProps {
   children: React.ReactNode;
 }
 
-interface PostDataEntry {
+export interface PostDataEntry {
   titleImageSrc?: string;
   carouselTexts: string[];
   caption: string;
@@ -20,9 +20,8 @@ export const ContentContext = createContext(
 
 const useDummyData = import.meta.env.VITE_USE_DUMMY_DATA === 'true';
 const isDev = import.meta.env.DEV && useDummyData
-console.log(isDev);
 
-const useContentState = () => {
+export const useContentState = () => {
   const [posts, setPosts] = useState<null | PostData>(
     isDev ? [dummyData] : null
   );

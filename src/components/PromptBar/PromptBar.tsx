@@ -1,4 +1,4 @@
-import { Suspense, useContext, useEffect, useState } from "react";
+import { Suspense, useContext, useState } from "react";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import styled from "styled-components";
 import { ClimbingBoxLoader } from "react-spinners";
@@ -86,10 +86,11 @@ const Questionnaire = (props: QuestionnaireProps) => {
             width="100%"
             padding="1rem"
             onChange={handlePromptChange}
-            value={promptData[name]}
+            value={promptData[name] || ""}
             autoComplete="off"
             autoCorrect="off"
             spellCheck="false"
+            data-testid={`${name}-text-input`}
           />
 
           <PromptBarButtons

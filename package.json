@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
-    "test": "vitest --config vitest.config.ts"
+    "test": "vitest --run --config vitest.config.ts",
+    "test:dev": "vitest --config vitest.config.ts"
   },
   "dependencies": {
     "framer-motion": "^10.11.6",

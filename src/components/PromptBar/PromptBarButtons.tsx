@@ -55,6 +55,7 @@ const PromptBarButtons = (props: PromptBarButtonsProps) => {
         <PromptBarButton text="Back" onClick={() => handleNavigation(-1)} />
       )}
       <PromptBarButton
+        data-testid="next-button"
         text={inputIndex < prompts.length - 1 ? "Next" : "Finish"}
         onClick={() => handleNavigation(1)}
         disabled={!promptData[name]}

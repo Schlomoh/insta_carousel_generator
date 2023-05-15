@@ -5,24 +5,24 @@ interface ProviderProps {
 }
 
 export interface PromptData {
-  [key: string]: string;
-  branche: string;
-  topic: string;
-  instagram: string;
+  [key: string]: string | null;
+  branche: string | null;
+  topic: string | null;
+  instagram: string | null;
 }
 
 export const PromptContext = createContext(
   {} as ReturnType<typeof usePromptState>
 );
 
-const useDummyData = import.meta.env.VITE_USE_DUMMY_DATA === 'true';
-const isDev = import.meta.env.DEV && useDummyData
+const useDummyData = import.meta.env.VITE_USE_DUMMY_DATA === "true";
+const isDev = import.meta.env.DEV && useDummyData;
 
 const usePromptState = () => {
   const [promptData, setPromptData] = useState<PromptData>({
-    branche: "",
-    topic: "",
-    instagram: "",
+    branche: null,
+    topic: null,
+    instagram: null,
   });
   const [finished, setFinished] = useState<boolean>(isDev);
 
