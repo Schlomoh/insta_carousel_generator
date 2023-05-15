@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && npm run test && vite build",
     "serve": "vite preview",
     "test": "vitest --run --config vitest.config.ts",
     "test:dev": "vitest --config vitest.config.ts"
