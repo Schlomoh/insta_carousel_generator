@@ -63,6 +63,13 @@ describe("Successfully change caption of current post", () => {
     await act(async () => {
       result.current.addPost(JSON.stringify(basePost));
     });
+
+    await act(async () => result.current.updatePostProperty("fail", "caption"));
+
+    await waitFor(async () => {
+      expect(result.current.posts![0]).toEqual(basePost);
+    });
+
     await act(async () => {
       result.current.setSelectedPost(0);
     });
