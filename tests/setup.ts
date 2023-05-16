@@ -2,15 +2,7 @@ import { expect, afterEach } from "vitest";
 import { cleanup } from "@testing-library/react";
 import matchers from "@testing-library/jest-dom/matchers";
 import { rest } from "msw";
-// extends Vitest's expect method with methods from react-testing-library
-beforeAll(() => {
-  expect.extend(matchers);
-});
-
-// runs a cleanup after each test case (e.g. clearing jsdom)
-afterEach(() => {
-  cleanup();
-});
+import { setupServer } from "msw/node";
 
 export const openAiResponse = {
   id: "chatcmpl-7GcnkbhgvqZSQ1qAUIPBq1DB2NDNa",
@@ -35,8 +27,25 @@ export const openAiResponse = {
   ],
 };
 
-export const restHandlers = [
-  rest.post("https://api.openai.com/v1/chat/completions", (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(openAiResponse));
-  }),
-];
+const server = setupServer(
+  rest.post("http://localhost/api/completions", (req, res, ctx) => {
+    return res(ctx.json({ data: "mocked data" }));
+  })
+);
+
+// Start server before all tests
+beforeAll(() => {
+  // extends Vitest's expect method with methods from react-testing-library
+  expect.extend(matchers);
+  //mock server
+  server.listen({ onUnhandledRequest: "error" });
+});
+
+//  Close server after all tests
+afterAll(() => server.close());
+
+// Reset handlers after each test `important for test isolation`
+afterEach(() => {
+  server.resetHandlers();
+  cleanup();
+});

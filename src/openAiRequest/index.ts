@@ -1,1 +1,5 @@
-export { default as useFetchOpenAiData } from "./useFetchOpenAiData";
+export {
+  default as useFetchOpenAiData,
+  fetchData,
+  createGptPrompt,
+} from "./useFetchOpenAiData";

@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import wrapPromise from "./wrapPromise";
 import { OpenAiResponse } from "./OpenAiTypes";
 
-const createGptPrompt = (promptData: PromptData) => {
+export const createGptPrompt = (promptData: PromptData) => {
   return `As an expert on social media marketing, generate a JSON object 
   containing Instagram carousel posts for the ${promptData.branche} niche, 
   following the TypeScript structure provided. Come up with an almost 
@@ -45,8 +45,13 @@ const createGptPrompt = (promptData: PromptData) => {
   only return the json data as a plain text. nothing else.`;
 };
 
-const fetchData = async (promptData: PromptData): Promise<OpenAiResponse> => {
-  const url = "/api/completions";
+export const fetchData = async (
+  promptData: PromptData
+): Promise<OpenAiResponse> => {
+  const url =
+    process.env.NODE_ENV === "test"
+      ? "http://localhost/api/completions"
+      : "/api/completions";
 
   const response = await fetch(url, {
     method: "POST",
@@ -69,10 +74,7 @@ interface ResourceState {
 const useDummyData = import.meta.env.VITE_USE_DUMMY_DATA === "true";
 const isDev = import.meta.env.DEV && useDummyData;
 
-export const useFetchOpenAiData = (
-  promptData: PromptData,
-  isFinished: boolean
-) => {
+const useFetchOpenAiData = (promptData: PromptData, isFinished: boolean) => {
   const [resource, setResource] = useState<ResourceState | null>(null);
   const prevIsFinishedRef = useRef<boolean | null>(isDev || null);
 
