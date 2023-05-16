@@ -8,7 +8,7 @@ export default defineConfig({
     setupFiles: "./tests/setup.ts",
     globals: true,
     environment: "jsdom",
-    silent: true,
+    // silent: true,
     reporters: ["verbose"],
   },
   resolve: {

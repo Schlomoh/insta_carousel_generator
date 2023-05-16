@@ -18,7 +18,7 @@ export const PromptContext = createContext(
 const useDummyData = import.meta.env.VITE_USE_DUMMY_DATA === "true";
 const isDev = import.meta.env.DEV && useDummyData;
 
-const usePromptState = () => {
+export const usePromptState = () => {
   const [promptData, setPromptData] = useState<PromptData>({
     branche: null,
     topic: null,

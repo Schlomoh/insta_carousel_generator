@@ -5,10 +5,8 @@ import { useState, useEffect } from "react";
 import wrapPromise from "./wrapPromise";
 import { OpenAiResponse } from "./OpenAiTypes";
 
-const fetchData = async (promptData: PromptData): Promise<OpenAiResponse> => {
-  const url = "/api/completions";
-
-  const prompt = `As an expert on social media marketing, generate a JSON object 
+const createGptPrompt = (promptData: PromptData) => {
+  return `As an expert on social media marketing, generate a JSON object 
   containing Instagram carousel posts for the ${promptData.branche} niche, 
   following the TypeScript structure provided. Come up with an almost 
   click baiting, catchy and engaging title. Use the title as the 
@@ -45,6 +43,10 @@ const fetchData = async (promptData: PromptData): Promise<OpenAiResponse> => {
   }
   only add the real emoji characters, no supplementation.
   only return the json data as a plain text. nothing else.`;
+};
+
+const fetchData = async (promptData: PromptData): Promise<OpenAiResponse> => {
+  const url = "/api/completions";
 
   const response = await fetch(url, {
     method: "POST",
@@ -53,7 +55,7 @@ const fetchData = async (promptData: PromptData): Promise<OpenAiResponse> => {
     },
     body: JSON.stringify({
       model: "gpt-3.5-turbo",
-      messages: [{ role: "user", content: prompt }],
+      messages: [{ role: "user", content: createGptPrompt(promptData) }],
     }),
   });
 
